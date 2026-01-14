@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Independence Day Countdown</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>/* Independence Day Countdown Timer Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    /* Design Theme: Indian flag colors (saffron, white, green, blue) */
+    background: linear-gradient(135deg, #ff9933 0%, #ffffff 50%, #138808 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Header Styles */
+.header-section {
+    animation: fadeInDown 1s ease-out;
+}
+
+.main-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #2c3e50; /* Dark color for contrast */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin-bottom: 10px;
+    animation: pulse 2s infinite;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: #34495e; /* Slightly lighter dark color */
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Countdown Container */
+.countdown-container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 40px 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: slideInUp 1s ease-out;
+}
+
+.countdown-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.time-unit {
+    text-align: center;
+    min-width: 120px;
+}
+
+.time-value {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #e74c3c; /* A vibrant red for emphasis */
+    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    line-height: 1;
+    animation: countdownPulse 1s ease-in-out infinite alternate;
+}
+
+.time-label {
+    font-size: 1rem;
+    color: #2c3e50;
+    font-weight: bold;
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
+
+.time-separator {
+    font-size: 3rem;
+    color: #34495e;
+    font-weight: bold;
+    animation: blink 1s infinite;
+}
+
+/* Message Section */
+.countdown-message {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    animation: fadeIn 2s ease-out;
+}
+
+/* Flag Animation */
+.flag-container {
+    display: flex;
+    justify-content: center;
+    animation: fadeInUp 1.5s ease-out;
+}
+
+.flag {
+    width: 200px;
+    height: 130px;
+    border: 3px solid #2c3e50;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    animation: wave 3s ease-in-out infinite;
+}
+
+.flag-stripe {
+    height: 33.33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.saffron {
+    background: #ff9933;
+}
+
+.white {
+    background: #ffffff;
+    position: relative;
+}
+
+.green {
+    background: #138808;
+}
+
+.chakra {
+    font-size: 2rem;
+    color: #000080; /* Ashok Chakra blue */
+    animation: rotate 4s linear infinite;
+}
+
+/* Celebration Message */
+.celebration-message {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: celebrationBounce 0.6s ease-out;
+}
+
+.celebration-message h2 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    animation: rainbow 2s linear infinite;
+}
+
+.celebration-message p {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes countdownPulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0.3;
+    }
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(2deg);
+    }
+    75% {
+        transform: rotate(-2deg);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes celebrationBounce {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes rainbow {
+    0% { color: #ff0000; }
+    16% { color: #ff8000; }
+    33% { color: #ffff00; }
+    50% { color: #00ff00; }
+    66% { color: #0080ff; }
+    83% { color: #8000ff; }
+    100% { color: #ff0000; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .time-value {
+        font-size: 2.5rem;
+    }
+    
+    .time-separator {
+        font-size: 2rem;
+    }
+    
+    .countdown-display {
+        gap: 10px;
+    }
+    
+    .time-unit {
+        min-width: 80px;
+    }
+    
+    .countdown-message {
+        font-size: 1.4rem;
+    }
+    
+    .flag {
+        width: 150px;
+        height: 100px;
+    }
+    
+    .chakra {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 2rem;
+    }
+    
+    .time-value {
+        font-size: 2rem;
+    }
+    
+    .countdown-container {
+        padding: 20px 10px;
+    }
+    
+    .countdown-display {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .time-separator {
+        display: none;
+    }
+}
+      :root {
+            --saffron: #FF9933;
+            --white: #FFFFFF;
+            --green: #138808;
+            --navy: #000080;
+            --light-blue: #4a8df8;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            /* Design Theme: Ensure mobile responsiveness and fast loading. */
+        }
+.container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+                .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            font-family: 'Patua One', cursive;
+            color: var(--navy);
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--saffron), var(--white), var(--green));
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+        .livestream-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            margin-bottom: 30px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            background: #000;
+        }
+        .livestream-placeholder {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            flex-direction: column;
+        }
+        .schedule {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .timeline:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--saffron), var(--white), var(--green));
+            border-radius: 2px;
+        }
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+               .timeline-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--navy);
+        }
+        .timeline-desc {
+            color: #555;
+        }
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .event-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+        .event-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .event-content {
+            padding: 20px;
+        }
+         .event-date {
+            color: var(--saffron);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .event-title {
+            color: var(--navy);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .event-location {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+                .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--navy);
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #00005a;
+        }
+
+        /* Social Share Buttons */
+        .social-share-buttons .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-share-buttons .facebook-btn { background-color: #3b5998; }
+        .social-share-buttons .facebook-btn:hover { background-color: #2d4373; }
+
+        .social-share-buttons .twitter-btn { background-color: #1da1f2; }
+        .social-share-buttons .twitter-btn:hover { background-color: #0c85d0; }
+
+        .social-share-buttons .whatsapp-btn { background-color: #25d366; }
+        .social-share-buttons .whatsapp-btn:hover { background-color: #128c7e; }
+
+        .social-share-buttons .email-btn { background-color: #7f8c8d; }
+        .social-share-buttons .email-btn:hover { background-color: #5f6a6b; }
+
+        .trending-feed .card {
+            border: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+        .trending-feed .card:hover {
+            transform: translateY(-3px);
+        }
+        .trending-feed .card-img-top {
+            height: 150px;
+            object-fit: cover;
+        }
+
+        /* ===== RESPONSIVE DESIGN MEDIA QUERIES ===== */
+        
+        /* Large Desktop (1200px and up) */
+        @media (min-width: 1200px) {
+            .main-title {
+                font-size: 4rem;
+            }
+            .time-value {
+                font-size: 4.5rem;
+            }
+            .countdown-container {
+                padding: 50px 40px;
+            }
+        }
+        
+        /* Laptop/Desktop (992px to 1199px) */
+        @media (max-width: 1199px) and (min-width: 992px) {
+            .main-title {
+                font-size: 3.2rem;
+            }
+            .subtitle {
+                font-size: 1.3rem;
+            }
+            .time-value {
+                font-size: 3.5rem;
+            }
+            .time-unit {
+                min-width: 100px;
+            }
+            .countdown-container {
+                padding: 35px 25px;
+            }
+        }
+        
+        /* Tablet (768px to 991px) */
+        @media (max-width: 991px) and (min-width: 768px) {
+            .main-title {
+                font-size: 2.8rem;
+                margin-bottom: 15px;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            .time-value {
+                font-size: 3rem;
+            }
+            .time-unit {
+                min-width: 90px;
+            }
+            .time-separator {
+                font-size: 2.5rem;
+            }
+            .countdown-container {
+                padding: 30px 20px;
+                margin: 20px 10px;
+            }
+            .countdown-display {
+                gap: 15px;
+            }
+            .flag {
+                width: 160px;
+                height: 104px;
+            }
+            .chakra {
+                font-size: 1.6rem;
+            }
+            .celebration-message h2 {
+                font-size: 2.5rem;
+            }
+            .celebration-message p {
+                font-size: 1.3rem;
+            }
+            .countdown-message {
+                font-size: 1.5rem;
+            }
+            
+            /* Timeline adjustments for tablet */
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding: 15px 20px;
+            }
+            .timeline:before {
+                left: 20px;
+            }
+            .timeline-item:before {
+                left: 10px;
+            }
+            
+            /* Events grid for tablet */
+            .events-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            /* Social buttons for tablet */
+            .social-share-buttons {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: center;
+            }
+            .social-share-buttons .social-btn {
+                flex: 1;
+                min-width: 120px;
+                justify-content: center;
+            }
+        }
+        
+        /* Mobile Large (576px to 767px) */
+        @media (max-width: 767px) and (min-width: 576px) {
+            .main-title {
+                font-size: 2.2rem;
+                margin-bottom: 10px;
+            }
+            .subtitle {
+                font-size: 1rem;
+            }
+            .time-value {
+                font-size: 2.5rem;
+            }
+            .time-unit {
+                min-width: 80px;
+            }
+            .time-separator {
+                font-size: 2rem;
+                display: none; /* Hide separators on mobile for cleaner look */
+            }
+            .countdown-container {
+                padding: 25px 15px;
+                margin: 15px 5px;
+                border-radius: 15px;
+            }
+            .countdown-display {
+                gap: 10px;
+            }
+            .flag {
+                width: 140px;
+                height: 91px;
+            }
+            .chakra {
+                font-size: 1.4rem;
+            }
+            .celebration-message {
+                padding: 20px;
+            }
+            .celebration-message h2 {
+                font-size: 2rem;
+            }
+            .celebration-message p {
+                font-size: 1.1rem;
+            }
+            .countdown-message {
+                font-size: 1.2rem;
+            }
+            
+            /* Timeline for mobile */
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding: 12px 15px;
+            }
+            .timeline:before {
+                left: 15px;
+            }
+            
+            /* Events grid for mobile */
+            .events-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            /* Social buttons stack vertically on mobile */
+            .social-share-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .social-share-buttons .social-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            /* Adjust section padding */
+            .py-5 {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+        }
+        
+        /* Mobile Small (up to 575px) */
+        @media (max-width: 575px) {
+            .main-title {
+                font-size: 1.8rem;
+                margin-bottom: 8px;
+            }
+            .subtitle {
+                font-size: 0.9rem;
+            }
+            .time-value {
+                font-size: 2rem;
+            }
+            .time-unit {
+                min-width: 70px;
+            }
+            .time-label {
+                font-size: 0.8rem;
+            }
+            .time-separator {
+                display: none;
+            }
+            .countdown-container {
+                padding: 20px 10px;
+                margin: 10px 5px;
+                border-radius: 12px;
+            }
+            .countdown-display {
+                gap: 8px;
+                flex-direction: column;
+                align-items: center;
+            }
+            .countdown-display .row {
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+                width: 100%;
+            }
+            .flag {
+                width: 120px;
+                height: 78px;
+            }
+            .chakra {
+                font-size: 1.2rem;
+            }
+            .celebration-message {
+                padding: 15px;
+                border-radius: 10px;
+            }
+            .celebration-message h2 {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+            }
+            .celebration-message p {
+                font-size: 1rem;
+            }
+            .countdown-message {
+                font-size: 1rem;
+            }
+            
+            /* Container adjustments */
+            .container {
+                padding: 0 10px;
+            }
+            
+            /* Timeline for small mobile */
+            .timeline-item {
+                padding: 10px 12px;
+            }
+            .timeline:before {
+                left: 12px;
+            }
+            
+            /* Button adjustments */
+            .btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+            
+            /* Navbar adjustments */
+            .navbar {
+                padding: 0.5rem 1rem;
+            }
+            
+            /* Section titles */
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+            
+            /* Video and image containers */
+            .livestream-container {
+                margin-bottom: 20px;
+            }
+            
+            /* Card adjustments */
+            .card {
+                margin-bottom: 15px;
+            }
+            
+            /* Form adjustments */
+            .form-control {
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+        }
+        
+        /* Extra responsive utilities */
+        @media (max-width: 480px) {
+            .countdown-display {
+                flex-direction: column;
+            }
+            .countdown-display .time-unit {
+                display: inline-block;
+                margin: 5px;
+            }
+            .main-title {
+                font-size: 1.6rem;
+            }
+            .time-value {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Landscape orientation adjustments for mobile */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .countdown-container {
+                padding: 15px 10px;
+            }
+            .main-title {
+                font-size: 1.5rem;
+                margin-bottom: 5px;
+            }
+            .subtitle {
+                font-size: 0.8rem;
+            }
+            .time-value {
+                font-size: 1.5rem;
+            }
+            .py-5 {
+                padding-top: 1rem !important;
+                padding-bottom: 1rem !important;
+            }
+        }
+</style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">HAPPY INDEPENDENCE DAY</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.html">home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="quiz.html">quiz</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="cultural.html">cultural pogram</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="contact.html">contact with us</a>
+        </li>
+       
+      </ul>
+     
+    </div>
+  </div>
+</nav>
+    <div class="container-fluid">
+        <div class="row min-vh-100 align-items-center justify-content-center">
+            <div class="col-12 text-center">
+                <!-- Header -->
+                <div class="header-section mb-5">
+                    <h1 class="main-title">🇮🇳 INDEPENDENCE DAY 2025 🇮🇳</h1>
+                    <p class="subtitle">Celebrating 79 Years of Freedom</p>
+                </div>
+
+                <!-- Countdown Timer -->
+                <div class="countdown-container">
+                    <div id="countdown" class="countdown-display">
+                        <div class="time-unit">
+                            <div class="time-value" id="days">00</div>
+                            <div class="time-label">DAYS</div>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                            <div class="time-value" id="hours">00</div>
+                            <div class="time-label">HOURS</div>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                            <div class="time-value" id="minutes">00</div>
+                            <div class="time-label">MINUTES</div>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                            <div class="time-value" id="seconds">00</div>
+                            <div class="time-label">SECONDS</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Message -->
+                <div class="message-section mt-5">
+                    <p id="countdownMessage" class="countdown-message">Until India's Independence Day!</p>
+                </div>
+
+                <!-- Flag Animation -->
+                <div class="flag-container mt-4">
+                    <div class="flag">
+                        <div class="flag-stripe saffron"></div>
+                        <div class="flag-stripe white">
+                            <div class="chakra">⚙</div>
+                        </div>
+                        <div class="flag-stripe green"></div>
+                    </div>
+                </div>
+
+                <!-- Celebration Message (Hidden initially) -->
+                <div id="celebrationMessage" class="celebration-message" style="display: none;">
+                    <h2>🎉 HAPPY INDEPENDENCE DAY! 🎉</h2>
+                    <p>Jai Hind! Let's celebrate our freedom and unity!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+            <!-- Live Stream Section -->
+            <section id="livestream">
+                <h2 class="section-title">Live from Red Fort</h2>
+                <div class="livestream">
+                     <a href="https://www.youtube.com/watch?v=3YnfCH0mu9k" 
+           target="_blank" 
+           style="font-size: 20px; color: blue; text-decoration: none;">
+           🎵 Play Live Stream
+        </a>
+        <button onclick="window.open('https://www.youtube.com/live/8StsfxNNZsg?si=BuAvR723qnqlQ7HR', '_blank','style=width=400,height=400')"
+            style="padding: 10px 20px; font-size: 18px; background-color: orange; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Play Now
+    </button>
+                    <div class="livestream-placeholder" style="display: none;">
+                        <h3>Live coverage will begin shortly</h3>
+                        <p>Tune in at 9:30 AM for the independence day celebration
+                            
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <section id="schedule">
+                <h2 class="section-title">Program Schedule</h2>
+                <div class="schedule">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <div class="timeline-time">
+                                    08:30 AM
+                                </div>
+                                <h3 class="timeline-title">PM's Arrival at Rajpath</h3>
+                                <p class="timeline-desc">Prime Minister arrives at Rajpath to be received by the Defence Minister and the chiefs of the three services.</p>
+                            </div>
+                            </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <div class="timeline-time">
+                                    09:00 AM
+                                </div>
+                                <h3 class="timeline-title">Wreath Laying Ceremony</h3>
+                                <p class="timeline-desc">Prime Minister pays homage to the martyrs at Amar Jawan Jyoti, India Gate.</p>
+                            </div>
+                        </div>
+                          <div class="timeline-item">
+                            <div class="timeline-content">
+                                <div class="timeline-time">
+                                    09:30 AM
+                                </div>
+                                <h3 class="timeline-title">Republic Day Parade Begins</h3>
+                                <p class="timeline-desc">President's motorcade arrives at Rajpath accompanied by the President's Bodyguard.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <div class="timeline-time">
+                                    10:00 AM
+                                </div>
+                                <h3 class="timeline-title">National Anthem & PM's Address</h3>
+                                <p class="timeline-desc">21-gun salute and unfurling of the National Flag followed by PM's address to the nation.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <div class="timeline-time">
+                                    12:00 PM
+                                </div>
+                                <h3 class="timeline-title">Air Show & Final March</h3>
+                                <p class="timeline-desc">Spectacular fly-past by Indian Air Force aircraft and conclusion of the parade.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+             <section id="events">
+                <h2 class="section-title">Community Celebrations</h2>
+                <div class="events-grid">
+                    <div class="event-card">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c57b496b-efff-4089-b727-6fe62f3bd698.png" alt="Cultural dance performance with women in colorful traditional attire performing Garba dance" class="event-image" style="width: 400px; height: 400px; ">
+                        <div class="event-content">
+                            <div class="event-date">January 26 | 6:00 PM</div>
+                            <h3 class="event-title">Cultural Performance Evening</h3>
+                            <div class="event-location">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                Nehru Park, New Delhi
+                            </div>
+                            <p class="event-desc">Witness spectacular performances by artists from across India showcasing diverse cultural traditions.</p>
+                            <a href="#" class="btn">Register Now</a>
+                        </div>
+                    </div>
+                     <div class="event-card">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7ac8b0e9-638e-49b9-854f-56e911bd601a.png" alt="Patriotic song performance with school children dressed in tri-color outfits singing on stage" class="event-image" style="width: 400px; height: 400px; ">
+                        <div class="event-content">
+                            <div class="event-date">January 26 | 7:30 PM</div>
+                            <h3 class="event-title">Patriotic Song Festival</h3>
+                            <div class="event-location">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                India Gate Lawns
+                            </div>
+                            <p class="event-desc">An evening of patriotic songs performed by school children and renowned artists celebrating India's spirit.</p>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-card">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bec94d66-0bb6-41c1-8108-e07cef06216d.png" alt="Food festival stalls with variety of Indian dishes from different states with happy people eating together" class="event-image" style="width: 400px; height: 400px; ">
+                        <div class="event-content">
+                            <div class="event-date">January 26-28 | 12:00 PM - 10:00 PM</div>
+                            <h3 class="event-title">Unity in Diversity Food Festival</h3>
+                            <div class="event-location">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                Dilli Haat, INA
+                            </div>
+                            <p class="event-desc">Taste culinary delights from every state of India at this special festival celebrating our diverse cuisines.</p>
+                            <a href="#" class="btn">See Menu</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    <div class="flag-container mt-4">
+    <button class="btn btn-primary " onclick="showMassege()" >HAPPY INDEPENDENCE DAY</button>
+    <p id="massege"></p>
+    </div>
+
+    
+    <section class="tiranga-section">
+  <div class="tiranga-content">
+    <img src="https://organiser.org/wp-content/uploads/2023/08/har-ghar-tiranga.jpeg" alt="Indian Flag" class="tiranga-flag my10" style="height: 200px; width: 400px; align-items: center;">
+    <h1>Har Ghar Tiranga 🇮🇳</h1>
+    <p>
+      Celebrate the spirit of Independence Day!  
+      Hoist our Tiranga at your home from <b>13th to 15th August</b> and  
+      show your love for the nation.  
+    </p>
+    <a href="https://harghartiranga.com/" target="_blank" class="tiranga-btn">
+      Join the Campaign
+    </a>
+  </div>
+</section>
+
+    <!-- Photo Gallery Section -->
+    <section id="photo-gallery" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">📸 Independence Day Gallery</h2>
+            <div class="row mb-4">
+                <div class="col-12 text-center">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-outline-primary active" onclick="showGallery('historical')">Historical Celebrations</button>
+                        <button type="button" class="btn btn-outline-primary" onclick="showGallery('current')">Current Celebrations</button>
+                        <button type="button" class="btn btn-outline-success" onclick="showGallery('user-uploads')">Community Uploads</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Historical Gallery -->
+            <div id="historical-gallery" class="gallery-section">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="gallery-item">
+                            <img src="https://cbin.b-cdn.net/img/19/1947_NWA5K_630x382.jpeg" alt="Red Fort 1947" class="img-fluid rounded">
+                            <div class="gallery-overlay">
+                                <h5>First Independence Day - 1947</h5>
+                                <p>Nehru hoisting the flag at Red Fort</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="gallery-item">
+                            <img src="https://tse3.mm.bing.net/th/id/OIP.MJnkK2PbWpm4RpJfNlmvtAHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Freedom Fighters" class="img-fluid rounded">
+                            <div class="gallery-overlay">
+                                <h5>Freedom Fighters</h5>
+                                <p>Heroes who fought for our independence</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="gallery-item">
+                            <img src="https://images.hindustantimes.com/rf/image_size_960x540/HT/p2/2019/09/16/Pictures/gandhi-museum-courtesy-independence-gandhi-syndication-national_7dbc1d70-d86a-11e9-aefb-e5600836c7fe.jpg" alt="Salt March" class="img-fluid rounded">
+                            <div class="gallery-overlay">
+                                <h5>Salt March - 1930</h5>
+                                <p>Gandhi's historic march to Dandi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Current Gallery -->
+            <div id="current-gallery" class="gallery-section" style="display: none;">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="gallery-item">
+                            <img src="https://thefederal.com/h-upload/2023/08/16/412453-narendra-modi-red-fort-i-day-2023.webp" alt="Modern Celebration" class="img-fluid rounded">
+                            <div class="gallery-overlay">
+                                <h5>Red Fort Celebration 2024</h5>
+                                <p>PM addressing the nation</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="gallery-item">
+                            <img src="https://tse2.mm.bing.net/th/id/OIP.lcfPFlOQwHsBwULETwgg_QHaE8?rs=1&pid=ImgDetMain&o=7&rm=3photo-1571115764595-644a1f56a55c?w=400" alt="School Celebration" class="img-fluid rounded">
+                            <div class="gallery-overlay">
+                                <h5>School Celebrations</h5>
+                                <p>Children celebrating across India</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="gallery-item">
+                            <img src="https://www.newsonair.gov.in/wp-content/uploads/2025/08/har-ghar-tiranga-1723210347977-768x432.jpg" alt="Har Ghar Tiranga" class="img-fluid rounded">
+                            <div class="gallery-overlay">
+                                <h5>Har Ghar Tiranga</h5>
+                                <p>Every home, every flag</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- User Uploads Gallery -->
+            <div id="user-uploads-gallery" class="gallery-section" style="display: none;">
+                <div class="row g-3" id="user-photos-container">
+                    <div class="col-12 text-center">
+                        <p class="text-muted">Upload your flag hoisting photos to see them here!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section id="videos" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">🎬 Patriotic Videos</h2>
+            <div class="row mb-4">
+                <div class="col-12 text-center">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-outline-danger active" onclick="showVideos('songs')">Patriotic Songs</button>
+                        <button type="button" class="btn btn-outline-danger" onclick="showVideos('speeches')">Historic Speeches</button>
+                        <button type="button" class="btn btn-outline-danger" onclick="showVideos('performances')">Children's Performances</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Patriotic Songs -->
+            <div id="songs-videos" class="video-section">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <a href="https://www.youtube.com/watch?v=3YnfCH0mu9k" 
+           target="_blank" 
+           style="font-size: 20px; color: blue; text-decoration: none;">
+           🎵 Play Vande Mataram
+        </a>
+         <button onclick="window.open('https://youtu.be/WfqMmypbACg?si=Fedt7Cba5EjWpXeM', '_blank','style: width=400,height=400')"
+            style="padding: 10px 20px; font-size: 18px; background-color: orange; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Play Now
+    </button>
+
+                            </div>
+                            <div class="video-info p-3">
+                                <h5>Vande Mataram</h5>
+                                <p>The national song that ignites patriotic spirit</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                  <a href="https://www.youtube.com/watch?v=3YnfCH0mu9k" 
+           target="_blank" 
+           style="font-size: 20px; color: blue; text-decoration: none;">
+           🎵 Play Jana Gana Mana
+        </a>
+        <button onclick="window.open('https://youtu.be/ljsf5ngprNw?si=ZdWMisPT4x_7QuI-', '_blank','style: width=400,height=400')"
+            style="padding: 10px 20px; font-size: 18px; background-color: orange; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Play Now
+    </button>
+
+                            </div>
+                            
+                            <div class="video-info p-3">
+                                <h5>Jana Gana Mana</h5>
+                                <p>Our beautiful national anthem</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              
+                   
+                </div>
+            </div>
+            
+            <!-- Historic Speeches -->
+            <div id="speeches-videos" class="video-section" style="display: none;">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                 <a href="https://www.youtube.com/watch?v=3YnfCH0mu9k" 
+           target="_blank" 
+           style="font-size: 20px; color: blue; text-decoration: none;">
+           🎵 Play Jana Gana Mana
+        </a>
+        <button onclick="window.open('https://youtu.be/lrEkYscgbqE?si=FE7Vz6sJE4hmaEJ0', '_blank','style: width=400,height=400')"
+            style="padding: 10px 20px; font-size: 18px; background-color: orange; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Play Now
+    </button>
+                            </div>
+                            <div class="video-info p-3">
+                                <h5>Tryst with Destiny</h5>
+                                <p>Nehru's historic speech on Independence Eve</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                  <a href="https://www.youtube.com/watch?v=3YnfCH0mu9k" 
+           target="_blank" 
+           style="font-size: 20px; color: blue; text-decoration: none;">
+           🎵 Play gandhi speeches
+        </a>
+        <button onclick="window.open('https://youtu.be/PXvIzgAzML8?si=-YugVigoUQxnBLsD', '_blank','style: width=400,height=400')"
+            style="padding: 10px 20px; font-size: 18px; background-color: orange; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Play Now
+    </button>
+                            </div>
+                            <div class="video-info p-3">
+                                <h5>Gandhi's Speeches</h5>
+                                <p>The Father of Nation's inspiring words</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4 mt-3">
+                    <div class="col-md-6">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                 <a href="https://www.youtube.com/watch?v=3YnfCH0mu9k" 
+           target="_blank" 
+           style="font-size: 20px; color: blue; text-decoration: none;">
+           🎵 Play Quit India Movement
+        </a>
+        <button onclick="window.open('https://youtu.be/8YKlsHsB4To?si=52EsBErCtVlXRN35', '_blank','style: width=400,height=400')"
+            style="padding: 10px 20px; font-size: 18px; background-color: orange; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Play Now
+    </button>
+                            </div>
+                            <div class="video-info p-3">
+                                <h5>Quit India Movement</h5>
+                                <p>Gandhi's historic call for independence</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                 <a href="https://www.youtube.com/watch?v=3YnfCH0mu9k" 
+           target="_blank" 
+           style="font-size: 20px; color: blue; text-decoration: none;">
+           🎵 Play  Netaji's insparing words
+        </a>
+        <button onclick="window.open('https://youtu.be/8n9c9qdZoVI?si=WLkBQ3DlrBFQgfL9', '_blank','style: width=400,height=400')"
+            style="padding: 10px 20px; font-size: 18px; background-color: orange; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Play Now
+    </button>
+                            </div>
+                            <div class="video-info p-3">
+                                <h5>Subhash Chandra Bose Speeches</h5>
+                                <p>Netaji's inspiring words for freedom</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Children's Performances -->
+            <div id="performances-videos" class="video-section" style="display: none;">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <iframe width="100%" height="250" src="https://www.youtube.com/embed/kJa2kwoZ2a4" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="video-info p-3">
+                                <h5>School Cultural Program</h5>
+                                <p>Children performing patriotic dance</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <iframe width="100%" height="250" src="https://www.youtube.com/embed/6p0DAz_30qQ" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="video-info p-3">
+                                <h5>Kids Singing National Songs</h5>
+                                <p>Adorable performances by young patriots</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4 mt-3">
+                    <div class="col-md-6">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <iframe width="100%" height="250" src="https://www.youtube.com/embed/lP5Xv7QqXiM" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="video-info p-3">
+                                <h5>Independence Day Parade</h5>
+                                <p>Children marching with pride and joy</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <iframe width="100%" height="250" src="https://www.youtube.com/embed/AImp_VsqSEk" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="video-info p-3">
+                                <h5>Tricolor Flag Dance</h5>
+                                <p>Beautiful choreography celebrating our flag</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Upload Section -->
+    <section id="user-upload" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">📤 Share Your Flag Hoisting Photos</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="upload-card p-4 border rounded shadow-sm">
+                        <div class="upload-area text-center p-4 border-dashed rounded" onclick="document.getElementById('photo-upload').click()">
+                            <div class="upload-icon mb-3">
+                                <i class="fas fa-cloud-upload-alt fa-3x text-primary"></i>
+                            </div>
+                            <h5>Upload Your Flag Hoisting Photos</h5>
+                            <p class="text-muted">Share photos from your home, office, or community celebrations</p>
+                            <button type="button" class="btn btn-primary">Choose Photos</button>
+                            <input type="file" id="photo-upload" multiple accept="image/*" style="display: none;" onchange="handlePhotoUpload(event)">
+                        </div>
+                        
+                        <div class="upload-form mt-4" id="upload-form" style="display: none;">
+                            <div class="mb-3">
+                                <label for="photo-title" class="form-label">Photo Title</label>
+                                <input type="text" class="form-control" id="photo-title" placeholder="e.g., Flag hoisting at my home">
+                            </div>
+                            <div class="mb-3">
+                                <label for="photo-description" class="form-label">Description</label>
+                                <textarea class="form-control" id="photo-description" rows="3" placeholder="Share your Independence Day story..."></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="photo-location" class="form-label">Location</label>
+                                <input type="text" class="form-control" id="photo-location" placeholder="City, State">
+                            </div>
+                            <div class="text-center">
+                                <button type="button" class="btn btn-success me-2" onclick="submitPhoto()">Share Photo</button>
+                                <button type="button" class="btn btn-secondary" onclick="cancelUpload()">Cancel</button>
+                            </div>
+                        </div>
+                        
+                        <div id="upload-preview" class="mt-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Integration Section -->
+    <section id="social-integration" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">📢 Share the Spirit of Freedom!</h2>
+            <div class="row justify-content-center mb-4">
+                <div class="col-md-8 text-center">
+                    <p class="lead mb-4">Spread the joy of Independence Day with your friends and family!</p>
+                    <div class="social-share-buttons">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_WEBSITE_URL" target="_blank" class="btn btn-primary social-btn facebook-btn me-2">
+                            <i class="fab fa-facebook-f"></i> Share on Facebook
+                        </a>
+                        <a href="https://twitter.com/intent/tweet?url=YOUR_WEBSITE_URL&text=Happy%20Independence%20Day%20India!%20Join%20the%20celebration%20here:" target="_blank" class="btn btn-info social-btn twitter-btn me-2">
+                            <i class="fab fa-twitter"></i> Share on Twitter
+                        </a>
+                        <a href="https://wa.me/?text=Happy%20Independence%20Day%20India!%20Join%20the%20celebration%20here:%20YOUR_WEBSITE_URL" target="_blank" class="btn btn-success social-btn whatsapp-btn me-2">
+                            <i class="fab fa-whatsapp"></i> Share on WhatsApp
+                        </a>
+                        <a href="mailto:?subject=Happy%20Independence%20Day%20India!&body=Check%20out%20this%20Independence%20Day%20celebration%20website:%20YOUR_WEBSITE_URL" class="btn btn-secondary social-btn email-btn">
+                            <i class="fas fa-envelope"></i> Share via Email
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-title text-center mt-5 mb-4">#IndependenceDay2025 Trending Now!</h3>
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="trending-feed p-4 border rounded shadow-sm bg-white">
+                        <p class="text-muted text-center">
+                            <i class="fas fa-spinner fa-spin me-2"></i> Loading trending posts... (Requires backend integration)
+                        </p>
+                        <!-- This section would dynamically load trending posts from social media using a backend -->
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img src="https://www.shutterstock.com/shutterstock/photos/2096357029/display_1500/stock-vector-jai-hind-hindi-calligraphy-with-indian-flag-abstract-dry-brush-decorative-design-for-indian-2096357029.jpg" class="card-img-top" alt="Trending Post 1">
+                                    <div class="card-body">
+                                        <h5 class="card-title">#JaiHind</h5>
+                                        <p class="card-text"><small class="text-muted">User @Patriot_India</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img src="https://c8.alamy.com/comp/2X4EWJ0/happy-79th-indonesia-independence-day-with-golden-number-design-2X4EWJ0.jpg" class="card-img-top" alt="Trending Post 2">
+                                    <div class="card-body">
+                                        <h5 class="card-title">#FreedomAt79</h5>
+                                        <p class="card-text"><small class="text-muted">User @IndiaCelebrates</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img src="https://pothashang.in/wp-content/uploads/2025/08/Har-Ghar-Tiranga.jpg" class="card-img-top" alt="Trending Post 3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">#HarGharTiranga</h5>
+                                        <p class="card-text"><small class="text-muted">User @MyIndiaMyPride</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Message for India's Future (New Call-to-Action) -->
+    <section id="message-for-future" class="py-5">
+        <div class="container text-center">
+            <h2 class="section-title mb-4">✍️ Share Your Message for India’s Future!</h2>
+            <p class="lead mb-4">What are your hopes and dreams for India in the years to come? Share your thoughts!</p>
+            <button type="button" class="btn btn-lg btn-outline-success" data-bs-toggle="modal" data-bs-target="#messageModal">
+                Write Your Message
+            </button>
+
+            <!-- Message Modal -->
+            <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="messageModalLabel">Your Message for India</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-start">
+                            <div class="mb-3">
+                                <label for="messageName" class="form-label">Your Name (Optional)</label>
+                                <input type="text" class="form-control" id="messageName" placeholder="Enter your name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="futureMessage" class="form-label">Your Message</label>
+                                <textarea class="form-control" id="futureMessage" rows="5" placeholder="Type your message here..."></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" onclick="submitFutureMessage()">Submit Message</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Aspects (Conceptual - Requires Backend/Frameworks) -->
+    <!--
+    <section id="technical-aspects" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Technical Aspects</h2>
+            <ul>
+                <li>Stack: HTML5, CSS3, JavaScript (React or Vue recommended for interactivity).</li>
+                <li>Backend: Node.js (for user submissions, gallery uploads), optional.</li>
+                <li>Deployment: Host on platforms like Netlify, Vercel, or your preferred domain.</li>
+            </ul>
+        </div>
+    </section>
+    -->
+
+    <!-- Bonus Features (Conceptual - Requires Advanced Tech) -->
+    <!--
+    <section id="bonus-features" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Bonus Features</h2>
+            <ul>
+                <li>VR/360-degree gallery of Red Fort celebration (optional for tech-savvy users).</li>
+                <li>E-books and blogs on India's journey, national achievements, and future.</li>
+            </ul>
+        </div>
+    </section>
+    -->
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        // Placeholder for submitting future message
+        function submitFutureMessage() {
+            const name = document.getElementById('messageName').value;
+            const message = document.getElementById('futureMessage').value;
+            if (message.trim() === '') {
+                alert('Please write a message!');
+                return;
+            }
+            alert(`Thank you, ${name || 'Anonymous'}! Your message for India's future has been submitted: "${message}"`);
+            // In a real application, this data would be sent to a backend server.
+            const messageModal = bootstrap.Modal.getInstance(document.getElementById('messageModal'));
+            messageModal.hide();
+            document.getElementById('messageName').value = '';
+            document.getElementById('futureMessage').value = '';
+        }
+
+        // Function to show different gallery sections
+        function showGallery(galleryId) {
+            document.querySelectorAll('.gallery-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(galleryId + '-gallery').style.display = 'block';
+
+            document.querySelectorAll('#photo-gallery .btn-group .btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Function to show different video sections
+        function showVideos(videoId) {
+            document.querySelectorAll('.video-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(videoId + '-videos').style.display = 'block';
+
+            document.querySelectorAll('#videos .btn-group .btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Placeholder for handling photo upload (frontend only)
+        function handlePhotoUpload(event) {
+            const files = event.target.files;
+            const uploadPreview = document.getElementById('upload-preview');
+            uploadPreview.innerHTML = ''; // Clear previous previews
+            document.getElementById('upload-form').style.display = 'block'; // Show the form
+
+            if (files.length > 0) {
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    if (file.type.startsWith('image/')) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const img = document.createElement('img');
+                            img.src = e.target.result;
+                            img.style.maxWidth = '100px';
+                            img.style.maxHeight = '100px';
+                            img.style.margin = '10px';
+                            img.classList.add('img-thumbnail');
+                            uploadPreview.appendChild(img);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                }
+            }
+        }
+
+        // Placeholder for submitting photo
+        function submitPhoto() {
+            const title = document.getElementById('photo-title').value;
+            const description = document.getElementById('photo-description').value;
+            const location = document.getElementById('photo-location').value;
+            const userPhotosContainer = document.getElementById('user-photos-container');
+            const uploadPreview = document.getElementById('upload-preview');
+            const uploadedImages = uploadPreview.querySelectorAll('img');
+
+            if (uploadedImages.length === 0) {
+                alert('Please select at least one photo to upload.');
+                return;
+            }
+
+            // Remove the "Upload your flag hoisting photos..." message if present
+            const placeholderMessage = userPhotosContainer.querySelector('.text-muted');
+            if (placeholderMessage) {
+                placeholderMessage.remove();
+            }
+
+            uploadedImages.forEach(img => {
+                const newPhotoHtml = `
+                    <div class="col-md-4">
+                        <div class="gallery-item">
+                            <img src="${img.src}" alt="${title || 'User Upload'}" class="img-fluid rounded">
+                            <div class="gallery-overlay">
+                                <h5>${title || 'Community Photo'}</h5>
+                                <p>${description || 'Shared by a proud Indian!'}</p>
+                                ${location ? `<p><small><i class="fas fa-map-marker-alt"></i> ${location}</small></p>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                userPhotosContainer.insertAdjacentHTML('beforeend', newPhotoHtml);
+            });
+
+            alert('Photos uploaded successfully! (This is a demo, actual upload requires a backend)');
+            cancelUpload(); // Clear form and preview
+            showGallery('user-uploads'); // Switch to user uploads gallery
+        }
+
+        // Placeholder for canceling upload
+        function cancelUpload() {
+            document.getElementById('photo-upload').value = ''; // Clear selected files
+            document.getElementById('upload-preview').innerHTML = ''; // Clear preview
+            document.getElementById('upload-form').style.display = 'none'; // Hide the form
+            document.getElementById('photo-title').value = '';
+            document.getElementById('photo-description').value = '';
+            document.getElementById('photo-location').value = '';
+        }
+    </script>
+</body>
+</html>

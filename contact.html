@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multilingual Website with TTS</title>
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2196F3;
+            --text-color: #333;
+            --light-bg: #f5f5f5;
+            --dark-bg: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .language-selector {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .language-btn {
+            padding: 0.5rem 1rem;
+            background-color: white;
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .language-btn:hover, .language-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .tts-controls {
+            background-color: var(--light-bg);
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+            justify-content: space-between;
+        }
+
+        .tts-btn {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .tts-btn:hover {
+            background-color: #0d8bf2;
+        }
+
+        .tts-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .high-contrast {
+            background-color: var(--dark-bg) !important;
+            color: white !important;
+        }
+
+        .high-contrast-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--dark-bg);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .tts-controls {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .language-btn {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Accessibility focus styles */
+        button:focus, select:focus {
+            outline: 3px solid orange;
+        }
+    </style>
+</head>
+<body>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">HAPPY INDEPENDENCE DAY</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.html">home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="quiz.html">quiz</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="cultural.html">cultural pogram</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="contact.html">contact with us</a>
+        </li>
+       
+      </ul>
+     
+    </div>
+  </div>
+</nav>
+    <header>
+        <h1>National Digital Library</h1>
+        <p>Content available in multiple Indian languages</p>
+    </header>
+
+    <div class="container">
+        <div class="tts-controls">
+            <div>
+                <button class="tts-btn" id="readBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                    </svg>
+                    Read Aloud
+                </button>
+                <button class="tts-btn" id="pauseBtn" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                    </svg>
+                    Pause
+                </button>
+                <button class="tts-btn" id="stopBtn" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M6 6h12v12H6z"/>
+                    </svg>
+                    Stop
+                </button>
+            </div>
+            <div class="speed-control">
+                <label for="rate">Speed:</label>
+                <input type="range" id="rate" min="0.5" max="2" step="0.1" value="1">
+                <span id="rateValue">1x</span>
+            </div>
+        </div>
+
+        <div class="language-selector">
+            <button class="language-btn" data-lang="en">English</button>
+            <button class="language-btn" data-lang="hi">हिन्दी</button>
+            <button class="language-btn" data-lang="bn">বাংলা</button>
+            <button class="language-btn" data-lang="te">తెలుగు</button>
+            <button class="language-btn" data-lang="mr">मराठी</button>
+            <button class="language-btn" data-lang="ta">தமிழ்</button>
+            <button class="language-btn" data-lang="gu">ગુજરાતી</button>
+            <button class="language-btn" data-lang="kn">ಕನ್ನಡ</button>
+            <button class="language-btn" data-lang="ml">മലയാളം</button>
+            <button class="language-btn" data-lang="pa">ਪੰਜਾਬੀ</button>
+        </div>
+
+        <main>
+            <!-- English Content -->
+            <section class="content-section" id="en-content">
+                <h2>Welcome to Digital Library</h2>
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a8beabb6-9b43-4f58-8ce5-8d6d0125a22e.png" alt="Modern digital library interior with books and computers" class="content-image">
+                <p>The National Digital Library is an initiative to provide learning resources to all citizens. Our collection includes books, videos, articles and more from various domains.</p>
+                <p>All content is available in multiple Indian languages. Use the language selector above to switch languages.</p>
+            </section>
+
+            <!-- Hindi Content -->
+            <section class="content-section hide" id="hi-content">
+                <h2>डिजिटल लाइब्रेरी में आपका स्वागत है</h2>
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c5dbdb3c-c58a-446d-909c-e4450985f139.png" alt="आधुनिक डिजिटल लाइब्रेरी का आंतरिक भाग जहाँ किताबें और कंप्यूटर हैं" class="content-image">
+                <p>राष्ट्रीय डिजिटल लाइब्रेरी एक पहल है जो सभी नागरिकों को सीखने के संसाधन प्रदान करती है। हमारे संग्रह में विभिन्न क्षेत्रों की पुस्तकें, वीडियो, लेख और बहुत कुछ शामिल है।</p>
+                <p>सभी सामग्री कई भारतीय भाषाओं में उपलब्ध है। भाषा बदलने के लिए ऊपर दिए गए भाषा चयनकर्ता का उपयोग करें।</p>
+            </section>
+
+            <!-- Bengali Content -->
+            <section class="content-section hide" id="bn-content">
+                <h2>ডিজিটাল লাইব্রেরিতে স্বাগতম</h2>
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/88828caa-58fa-4f0c-8456-5f70361fc675.png" alt="আধুনিক ডিজিটাল লাইব্রেরির অভ্যন্তরীণ অংশ যেখানে বই এবং কম্পিউটার রয়েছে" class="content-image">
+                <p>জাতীয় ডিজিটাল লাইব্রেরি সমস্ত নাগরিকদের শেখার জন্য সম্পদ প্রদানের একটি উদ্যোগ। আমাদের সংগ্রহের মধ্যে রয়েছে বিভিন্ন ডোমেনের বই, ভিডিও, প্রবন্ধ এবং আরও অনেক কিছু।</p>
+                <p>সমস্ত বিষয়বস্তু একাধিক ভারতীয় ভাষায় পাওয়া যায়। ভাষা পরিবর্তন করতে উপরের ভাষা নির্বাচকটি ব্যবহার করুন।</p>
+            </section>
+
+            <!-- Telugu Content -->
+            <section class="content-section hide" id="te-content">
+                <h2>డిజిటల్ లైబ్రరీకి స్వాగతం</h2>
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/38ccb017-8051-4dec-a81e-fecd24779c26.png" alt="ఆధునిక డిజిటల్ లైబ్రరీ లోపలి భాగం పుస్తకాలు మరియు కంప్యూటర్లతో" class="content-image">
+                <p>నేషనల్ డిజిటల్ లైబ్రరీ అనేది అన్ని పౌరులకు లెర్నింగ్ రిసోర్స్లను అందించడానికి ఒక ఉద్యమం. మా సేకరణలో వేర్వేరు డొమైన్ల నుండి పుస్తకాలు, వీడియోలు, వ్యాసాలు మరియు మరిన్ని ఉన్నాయి.</p>
+                <p>అన్ని కంటెంట్ బహుళ భారతీయ భాషల్లో అందుబాటులో ఉంది. భాషలను మార్చడానికి పైన ఉన్న భాషా సెలెక్టర్ను ఉపయోగించండి.</p>
+            </section>
+
+            <!-- Add more language sections similarly -->
+            <!-- Marathi, Tamil, Gujarati, Kannada, Malayalam, Punjabi sections would follow same pattern -->
+        </main>
+    </div>
+
+    <button class="high-contrast-btn" id="contrastBtn" aria-label="Toggle high contrast mode">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 16V5c3.87 0 7 3.13 7 7s-3.13 7-7 7z"/>
+        </svg>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Language selection
+            const languageBtns = document.querySelectorAll('.language-btn');
+            const contentSections = document.querySelectorAll('.content-section');
+            let currentLang = 'en';
+
+            languageBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.dataset.lang;
+                    currentLang = lang;
+                    
+                    // Update active language button
+                    languageBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    contentSections.forEach(section => {
+                        section.classList.add('hide');
+                        if (section.id === `${lang}-content`) {
+                            section.classList.remove('hide');
+                        }
+                    });
+                    
+                    // Stop any ongoing speech when language changes
+                    stopSpeech();
+                });
+            });
+
+            // Text-to-Speech functionality
+            const speechSynthesis = window.speechSynthesis;
+            let utterance = null;
+            let paused = false;
+            
+            const readBtn = document.getElementById('readBtn');
+            const pauseBtn = document.getElementById('pauseBtn');
+            const stopBtn = document.getElementById('stopBtn');
+            const rateControl = document.getElementById('rate');
+            const rateValue = document.getElementById('rateValue');
+            
+            rateControl.addEventListener('input', function() {
+                rateValue.textContent = this.value + 'x';
+            });
+            
+            function getCurrentContent() {
+                const activeSection = document.querySelector(`.content-section:not(.hide)`);
+                return activeSection ? activeSection.textContent.trim() : '';
+            }
+            
+            function readCurrentContent() {
+                stopSpeech();
+                
+                const text = getCurrentContent();
+                if (!text) return;
+                
+                utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = getLanguageCode(currentLang);
+                utterance.rate = parseFloat(rateControl.value);
+                
+                utterance.onend = function() {
+                    readBtn.disabled = false;
+                    pauseBtn.disabled = true;
+                    stopBtn.disabled = true;
+                };
+                
+                speechSynthesis.speak(utterance);
+                readBtn.disabled = true;
+                pauseBtn.disabled = false;
+                stopBtn.disabled = false;
+            }
+            
+            function pauseSpeech() {
+                if (speechSynthesis.speaking && !paused) {
+                    speechSynthesis.pause();
+                    paused = true;
+                    pauseBtn.textContent = 'Resume';
+                } else {
+                    speechSynthesis.resume();
+                    paused = false;
+                    pauseBtn.textContent = 'Pause';
+                }
+            }
+            
+            function stopSpeech() {
+                speechSynthesis.cancel();
+                paused = false;
+                readBtn.disabled = false;
+                pauseBtn.disabled = true;
+                stopBtn.disabled = true;
+                pauseBtn.textContent = 'Pause';
+            }
+            
+            function getLanguageCode(lang) {
+                // Maps our simple language codes to proper BCP 47 codes
+                const codeMap = {
+                    'en': 'en-IN',
+                    'hi': 'hi-IN',
+                    'bn': 'bn-IN',
+                    'te': 'te-IN',
+                    'mr': 'mr-IN',
+                    'ta': 'ta-IN',
+                    'gu': 'gu-IN',
+                    'kn': 'kn-IN',
+                    'ml': 'ml-IN',
+                    'pa': 'pa-IN'
+                };
+                return codeMap[lang] || 'en-IN';
+            }
+            
+            readBtn.addEventListener('click', readCurrentContent);
+            pauseBtn.addEventListener('click', pauseSpeech);
+            stopBtn.addEventListener('click', stopSpeech);
+            
+            // High contrast mode toggle
+            const contrastBtn = document.getElementById('contrastBtn');
+            contrastBtn.addEventListener('click', function() {
+                document.body.classList.toggle('high-contrast');
+            });
+            
+            // Initialize
+            document.querySelector('.language-btn[data-lang="en"]').classList.add('active');
+        });
+    </script>
+</body>
+</html>
+

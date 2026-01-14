@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultural Heritage Events - Rangoli & National Pride</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary-color: #f97316;
+            --secondary-color: #ea580c;
+            --accent-color: #f59e0b;
+            --dark-color: #991b1b;
+            --light-color: #fef3c7;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, rgba(249,115,22,0.8) 0%, rgba(234,88,12,0.9) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pattern-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7d3c9ee0-06a7-490f-88de-8676ccc4216b.png');
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .event-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .rangoli-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .certificate-card {
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .flag-hoisting-section {
+            background-color: var(--light-color);
+            background-image: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/09ff1f55-cb1e-4fbd-b0c2-1df34cf0dea6.png');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+        
+        @media (max-width: 768px) {
+            .rangoli-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">HAPPY INDEPENDENCE DAY</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.html">home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="quiz.html">quiz</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="cultural.html">cultural pogram</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="contact.html">contact with us</a>
+        </li>
+       
+      </ul>
+     
+    </div>
+  </div>
+</nav>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/04bcf785-8134-4dfa-9d48-9dfb19b6f468.png" alt="Cultural Heritage Logo" class="h-8 w-8">
+                        <span class="ml-2 text-xl font-bold text-gray-900">Cultural Heritage</span>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="#rangoli" class="text-gray-900 hover:text-orange-600 px-3 py-2 text-sm font-medium">Rangoli</a>
+                    <a href="#events" class="text-gray-900 hover:text-orange-600 px-3 py-2 text-sm font-medium">Events</a>
+                    <a href="#flag" class="text-gray-900 hover:text-orange-600 px-3 py-2 text-sm font-medium">Flag Hoisting</a>
+                    <a href="#contests" class="text-gray-900 hover:text-orange-600 px-3 py-2 text-sm font-medium">Contests</a>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-900 hover:text-orange-600 focus:outline-none" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="pattern-overlay"></div>
+        <div class="max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center">
+                <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
+                    <span class="block">Celebrating Our</span>
+                    <span class="block text-yellow-200">Cultural Heritage</span>
+                </h1>
+                <p class="mt-6 max-w-lg mx-auto text-xl text-orange-100">
+                    Showcasing vibrant traditions through Rangoli, cultural events, and national pride celebrations
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Rangoli Competition Section -->
+    <section id="rangoli" class="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                Rangoli Artistry Competitions
+            </h2>
+            <p class="mt-4 max-w-2xl text-xl text-gray-600 mx-auto">
+                Traditional floor art showcasing creativity and cultural expression
+            </p>
+        </div>
+        
+        <div class="rangoli-gallery">
+            <!-- Rangoli Competition 1 -->
+            <div class="event-card bg-white rounded-lg overflow-hidden">
+                <div class="relative">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a1a218ae-13fa-44cc-9ad5-be55a19b7c55.png" alt="Vibrant Rangoli competition with floral patterns and diya decorations" class="w-full h-48 object-cover">
+                    <span class="absolute top-2 right-2 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded-full">Winner</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-gray-900">Annual Rangoli Festival</h3>
+                    <p class="mt-2 text-gray-600">School Grounds, December 15, 2023</p>
+                    <div class="mt-4 flex items-center text-sm text-gray-500">
+                        <i class="fas fa-users mr-2"></i> 32 Participants
+                    </div>
+                    <div class="mt-2 flex items-center text-sm text-gray-500">
+                        <i class="fas fa-trophy mr-2"></i> 3 Categories
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rangoli Competition 2 -->
+            <div class="event-card bg-white rounded-lg overflow-hidden">
+                <div class="relative">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9cb2553a-21b7-4abd-b52c-e75a8203ed80.png" alt="Intricate Diwali-themed Rangoli with lamps and auspicious symbols" class="w-full h-48 object-cover">
+                </div>
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-gray-900">Diwali Special Competition</h3>
+                    <p class="mt-2 text-gray-600">Community Center, November 10, 2023</p>
+                    <div class="mt-4 flex items-center text-sm text-gray-500">
+                        <i class="fas fa-users mr-2"></i> 45 Participants
+                    </div>
+                    <div class="mt-2 flex items-center text-sm text-gray-500">
+                        <i class="fas fa-award mr-2"></i> Special Judges' Choice
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rangoli Competition 3 -->
+            <div class="event-card bg-white rounded-lg overflow-hidden">
+                <div class="relative">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b542dde4-d8c2-4c68-b442-b51a62143b69.png" alt="Traditional folk art inspired Rangoli designs by college students" class="w-full h-48 object-cover">
+                </div>
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-gray-900">Inter-College Rangoli Contest</h3>
+                    <p class="mt-2 text-gray-600">University Campus, October 5, 2023</p>
+                    <div class="mt-4 flex items-center text-sm text-gray-500">
+                        <i class="fas fa-users mr-2"></i> 18 Teams
+                    </div>
+                    <div class="mt-2 flex items-center text-sm text-gray-500">
+                        <i class="fas fa-clock mr-2"></i> 3 Hour Challenge
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-12">
+            <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700">
+                View All Rangoli Events
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Cultural Events Section -->
+    <section id="events" class="bg-gray-100 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Cultural Events Celebrations
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-600 mx-auto">
+                    Connecting communities through shared traditions and celebrations
+                </p>
+            </div>
+            
+            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <!-- Event 1 -->
+                <div class="event-card bg-white rounded-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bf22dbee-521a-41d4-ab5d-26dd22314573.png" alt="Traditional folk dance performance with colorful costumes" class="w-full h-48 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                            <span class="text-white text-sm font-semibold">Featured Event</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-gray-900">Cultural Dance Festival</h3>
+                        <p class="mt-2 text-gray-600">January 20, 2024 | City Auditorium</p>
+                        <p class="mt-3 text-gray-700">Annual showcase of traditional dances from various regions performed by local artists.</p>
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="text-sm text-orange-600 font-medium">
+                                <i class="fas fa-calendar-day mr-1"></i> 2 Days
+                            </span>
+                            <a href="#" class="text-sm font-medium text-orange-600 hover:text-orange-700">View Details →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event 2 -->
+                <div class="event-card bg-white rounded-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/80fff05a-5229-4c68-b33e-bc48363139d5.png" alt="Chef demonstrating traditional cooking methods at festival" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-gray-900">Traditional Cuisine Workshop</h3>
+                        <p class="mt-2 text-gray-600">February 5, 2024 | Community Kitchen</p>
+                        <p class="mt-3 text-gray-700">Learn authentic cooking techniques and recipes passed down through generations.</p>
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="text-sm text-orange-600 font-medium">
+                                <i class="fas fa-user-friends mr-1"></i> Limited Seats
+                            </span>
+                            <a href="#" class="text-sm font-medium text-orange-600 hover:text-orange-700">Register Now →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event 3 -->
+                <div class="event-card bg-white rounded-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d3702648-8d8b-4bbe-91d8-1a6d576dd63a.png" alt="Traditional musicians performing classical instruments" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-gray-900">Folk Music Evening</h3>
+                        <p class="mt-2 text-gray-600">March 12, 2024 | Riverside Amphitheater</p>
+                        <p class="mt-3 text-gray-700">An evening celebrating indigenous music forms with performances by renowned artists.</p>
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="text-sm text-orange-600 font-medium">
+                                <i class="fas fa-music mr-1"></i> Live Performance
+                            </span>
+                            <a href="#" class="text-sm font-medium text-orange-600 hover:text-orange-700">Get Tickets →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flag Hoisting Section -->
+    <section id="flag" class="flag-hoisting-section py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="bg-white/90 inline-block px-8 py-6 rounded-lg shadow-lg">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Flag Hoisting Ceremonies
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-700 mx-auto">
+                    Celebrating national pride in schools, colleges and workplaces
+                </p>
+                
+                <div class="mt-8 grid gap-6 md:grid-cols-3">
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <div class="mx-auto h-16 w-16 flex items-center justify-center rounded-full bg-orange-100">
+                            <i class="fas fa-school text-orange-600 text-2xl"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">School Ceremonies</h3>
+                        <p class="mt-2 text-gray-600">Students participating in flag hoisting with cultural programs</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <div class="mx-auto h-16 w-16 flex items-center justify-center rounded-full bg-orange-100">
+                            <i class="fas fa-briefcase text-orange-600 text-2xl"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">Corporate Events</h3>
+                        <p class="mt-2 text-gray-600">Workplace celebrations honoring national holidays</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <div class="mx-auto h-16 w-16 flex items-center justify-center rounded-full bg-orange-100">
+                            <i class="fas fa-users text-orange-600 text-2xl"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">Community Programs</h3>
+                        <p class="mt-2 text-gray-600">Public celebrations with patriotic songs and speeches</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contest Results Section -->
+    <section id="contests" class="bg-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Art & Essay Contest Results
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-600 mx-auto">
+                    Recognizing creativity and excellence in our competitions
+                </p>
+            </div>
+            
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <!-- Contest 1 -->
+                <div class="certificate-card bg-gray-50 rounded-lg p-6">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <div class="h-12 w-12 rounded-full bg-orange-100 flex items-center justify-center">
+                                <i class="fas fa-palette text-orange-600"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">National Art Contest 2023</h3>
+                            <p class="text-gray-600">Theme: "Cultural Heritage Through Colors"</p>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <h4 class="text-sm font-medium text-gray-900">Winners</h4>
+                        <ul class="mt-2 space-y-3">
+                            <li class="flex items-center">
+                                <span class="mr-2 text-orange-600">🏆</span>
+                                <span class="text-gray-700">Riya Sharma (Grade 10)</span>
+                                <a href="#" class="ml-auto text-sm text-orange-600 hover:text-orange-700">Download</a>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="mr-2 text-orange-600">🥈</span>
+                                <span class="text-gray-700">Aarav Patel (Grade 9)</span>
+                                <a href="#" class="ml-auto text-sm text-orange-600 hover:text-orange-700">Download</a>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="mr-2 text-orange-600">🥉</span>
+                                <span class="text-gray-700">Anika Gupta (Grade 11)</span>
+                                <a href="#" class="ml-auto text-sm text-orange-600 hover:text-orange-700">Download</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Contest 2 -->
+                <div class="certificate-card bg-gray-50 rounded-lg p-6">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <div class="h-12 w-12 rounded-full bg-orange-100 flex items-center justify-center">
+                                <i class="fas fa-feather-alt text-orange-600"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">Heritage Essay Competition</h3>
+                            <p class="text-gray-600">Topic: "Preserving Traditions in Modern Times"</p>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <h4 class="text-sm font-medium text-gray-900">Winners</h4>
+                        <ul class="mt-2 space-y-3">
+                            <li class="flex items-center">
+                                <span class="mr-2 text-orange-600">🏆</span>
+                                <span class="text-gray-700">Kabir Singh (College)</span>
+                                <a href="#" class="ml-auto text-sm text-orange-600 hover:text-orange-700">Download</a>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="mr-2 text-orange-600">🥈</span>
+                                <span class="text-gray-700">Meera Nair (Grade 12)</span>
+                                <a href="#" class="ml-auto text-sm text-orange-600 hover:text-orange-700">Download</a>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="mr-2 text-orange-600">🥉</span>
+                                <span class="text-gray-700">Dev Khanna (Grade 11)</span>
+                                <a href="#" class="ml-auto text-sm text-orange-600 hover:text-orange-700">Download</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Contest 3 -->
+                <div class="certificate-card bg-gray-50 rounded-lg p-6">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <div class="h-12 w-12 rounded-full bg-orange-100 flex items-center justify-center">
+                                <i class="fas fa-camera-retro text-orange-600"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">Photo Contest 2023</h3>
+                            <p class="text-gray-600">Theme: "Cultural Expressions in Daily Life"</p>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <h4 class="text-sm font-medium text-gray-900">Winners</h4>
+                        <ul class="mt-2 space-y-3">
+                            <li class="flex items-center">
+                                <span class="mr-2 text-orange-600">🏆</span>
+                                <span class="text-gray-700">Neha Kapoor</span>
+                                <a href="#" class="ml-auto text-sm text-orange-600 hover:text-orange-700">Download</a>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="mr-2 text-orange-600">🥈</span>
+                                <span class="text-gray-700">Raj Verma</span>
+                                <a href="#" class="ml-auto text-sm text-orange-600 hover:text-orange-700">Download</a>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="mr-2 text-orange-600">🥉</span>
+                                <span class="text-gray-700">Priya Malhotra</span>
+                                <a href="#" class="ml-auto text-sm text-orange-600 hover:text-orange-700">Download</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700">
+                    View All Contest Results
+                    <i class="fas fa-trophy ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-lg font-semibold mb-4">Cultural Heritage Events</h3>
+                    <p class="text-gray-400">Celebrating and preserving traditional arts, crafts, and national pride through community events and competitions.</p>
+                    <div class="mt-6 flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Upcoming Events</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Photo Gallery</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Participate</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Volunteer</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-3 text-gray-400"></i>
+                            <span class="text-gray-400">123 Heritage Lane, Culture City</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-gray-400"></i>
+                            <span class="text-gray-400">+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-gray-400"></i>
+                            <span class="text-gray-400">info@culturalheritage.org</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
+                <p>© 2023 Cultural Heritage Events. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle mobile menu
+        document.querySelector('button[aria-expanded="false"]').addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+            
+            // Implementation for showing/hiding mobile menu would go here
+            alert('Mobile menu implementation would appear here');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Certificate download simulation
+        document.querySelectorAll('a[href="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if(this.textContent.trim() === 'Download') {
+                    e.preventDefault();
+                    alert('Certificate download would start here. In a real implementation, this would link to PDF files.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
